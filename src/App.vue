@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <Form />
+    <CurrencyForm />
     <Currencies />
     <Footer />
   </div>
@@ -9,28 +9,27 @@
 
 <script>
   import Header from './components/Header.vue';
-  import Form from './components/Header.vue';
-  import Currencies from './components/Header.vue';
-  import Footer from './components/Header.vue';
+  import CurrencyForm from './components/CurrencyForm.vue';
+  import Currencies from './components/Currencies.vue';
+  import Footer from './components/Footer.vue';
 
   export default {
     name: 'App',
     components: {
       Header,
-      Form,
+      CurrencyForm,
       Currencies,
       Footer
     }
   };
 </script>
 
-<style>
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+<style lang="sass" scoped>
+  #app
+    font-family: Avenir, Helvetica, Arial, sans-serif
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    text-align: center
+    color: #2c3e50
+    margin-top: 60px
 </style>

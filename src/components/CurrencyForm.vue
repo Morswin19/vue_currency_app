@@ -1,5 +1,5 @@
 <template>
-  <div><h1>I am a Currencies component</h1></div>
+  <div id="CurrencyForm"><h1>i am a form component</h1></div>
 </template>
 
 <script>

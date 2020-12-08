@@ -1,10 +1,12 @@
 <template>
-  <div></div>
+  <div id="Header">
+    <h1>I am a Header component</h1>
+  </div>
 </template>
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'Header',
     props: {
       msg: String
     }
@@ -12,6 +14,4 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
+<style scoped></style>
