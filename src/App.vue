@@ -1,12 +1,8 @@
 <template>
   <div id="app">
-    <h3>{{ currencies.effectiveDate }}</h3>
-    <h2>{{ currencies.rates[0].currency }}</h2>
-    <h2>{{ currencies.rates[0].code }}</h2>
-    <h2>{{ currencies.rates[0].mid }}</h2>
-    <Header />
+    <Header v-bind:date="currencies.effectiveDate" />
     <CurrencyForm />
-    <Currencies />
+    <Currencies v-bind:currenciesData="currencies.rates" />
     <Footer />
   </div>
 </template>
@@ -33,7 +29,6 @@
     created() {
       fetch('http://api.nbp.pl/api/exchangerates/tables/A')
         .then(response => response.json())
-        // .then(data => console.log(data[0].rates));
         .then(data => (this.currencies = data[0]));
     },
     methods: {
@@ -44,12 +39,16 @@
   };
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
+  *, *:before, *:after
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
   #app
     font-family: Avenir, Helvetica, Arial, sans-serif
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
     text-align: center
     color: #2c3e50
-    margin-top: 60px
 </style>

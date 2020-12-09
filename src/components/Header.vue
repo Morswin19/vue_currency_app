@@ -1,6 +1,7 @@
 <template>
   <div id="Header">
-    <h1>I am a Header component</h1>
+    <h1>Currency App</h1>
+    <h2>Exchange Rate Date: {{ date }}</h2>
   </div>
 </template>
 
@@ -8,10 +9,26 @@
   export default {
     name: 'Header',
     props: {
-      msg: String
+      date: String
     }
   };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style lang="sass" scoped>
+  #Header
+    width: 100vw
+    height: 200px
+    background-color: #666666
+    color: #ffffff
+    display: flex
+    flex-direction: column
+    padding: 20px
+    h1
+      margin: auto
+      font-size: 72px
+    h2
+      width: 100%
+      text-align: right
+      padding-right: 20px
+</style>
