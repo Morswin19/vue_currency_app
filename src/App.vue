@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <Header v-bind:date="currencies.effectiveDate" />
-    <CurrencyForm />
-    <Currencies v-bind:currenciesData="currencies.rates" />
+    <CurrencyForm v-bind:currenciesData="currencies.rates" />
+    <Currencies v-bind:currenciesData="currenciesToShow" />
     <Footer />
   </div>
 </template>
@@ -23,7 +23,29 @@
     },
     data() {
       return {
-        currencies: []
+        currencies: [],
+        currenciesToShow: [
+          {
+            currency: 'dolar amerykański',
+            code: 'USD',
+            mid: 3.6657
+          },
+          {
+            currency: 'euro',
+            code: 'EUR',
+            mid: 4.4449
+          },
+          {
+            currency: 'frank szwajcarski',
+            code: 'CHF',
+            mid: 4.1273
+          },
+          {
+            currency: 'funt szterling',
+            code: 'GBP',
+            mid: 4.9289
+          }
+        ]
       };
     },
     created() {
@@ -31,19 +53,18 @@
         .then(response => response.json())
         .then(data => (this.currencies = data[0]));
     },
-    methods: {
-      currency: () => {
-        return 'hello guinea pig';
-      }
-    }
+    methods: {}
   };
 </script>
 
 <style lang="sass">
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap')
+
   *, *:before, *:after
     margin: 0
     padding: 0
     box-sizing: border-box
+    font-family: 'Roboto', sans-serif
 
   #app
     font-family: Avenir, Helvetica, Arial, sans-serif

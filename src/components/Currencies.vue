@@ -39,4 +39,5 @@
         text-align: left
         border: 2px solid lightblue
         margin: 20px
+        border-radius: 20px
 </style>
