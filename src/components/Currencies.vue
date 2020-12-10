@@ -15,12 +15,18 @@
         </div>
       </li>
     </ul>
+    <Modal />
   </div>
 </template>
 
 <script>
+  import Modal from './Modal.vue';
+
   export default {
     name: 'Currencies',
+    components: {
+      Modal
+    },
     props: {
       currenciesData: Array
     },
