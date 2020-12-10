@@ -1,17 +1,20 @@
 <template>
   <div id="Currencies">
-    <h1>My currencies</h1>
+    <h1 ref="title">My currencies</h1>
     <ul>
-      <li v-bind:key="index" v-for="(item, index) in currenciesData">
+      <li
+        v-bind:ref="item.code"
+        v-bind:key="index"
+        v-for="(item, index) in currenciesToShow"
+      >
         <h3>{{ item.currency }}</h3>
         <h4>{{ item.code }}</h4>
         <h2>{{ item.mid }}</h2>
-        <div v-on:click="showConsole" class="remove">
+        <div v-on:click="removeElement(item.code)" class="remove">
           <div class="minus"></div>
         </div>
       </li>
     </ul>
-    <!-- <button v-on:click="showConsole()">show console</button> -->
   </div>
 </template>
 
@@ -21,8 +24,17 @@
     props: {
       currenciesData: Array
     },
+    data() {
+      return {
+        currenciesToShow: this.currenciesData
+      };
+    },
     methods: {
-      showConsole: e => console.log(e.target)
+      removeElement: function(code) {
+        this.currenciesToShow = this.currenciesToShow.filter(
+          item => item.code !== code
+        );
+      }
     }
   };
 </script>
