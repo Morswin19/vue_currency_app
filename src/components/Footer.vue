@@ -1,9 +1,20 @@
 <template>
-  <div><h1>I am a footer component</h1></div>
+  <div id="Footer">
+    <span>© Piotr Kalman 2020</span>
+  </div>
 </template>
 
 <script>
   export default {};
 </script>
 
-<style></style>
+<style lang="sass" scoped>
+  #Footer
+    width: 100%
+    height: 100px
+    background-color: #666
+    display: flex
+    color: #aaaaaa
+    span
+      margin: auto
+</style>
