@@ -43,6 +43,7 @@
         display: block
         width: 100%
         height: 40px
+        margin: 20px 0
         font-weight: 700
         background: lightblue
         border: 0px
@@ -50,7 +51,7 @@
         font-size: 20px
         color: #666
         cursor: pointer
-        margin: 20px 0
+        outline: none
         &:hover
           color: #000
 </style>

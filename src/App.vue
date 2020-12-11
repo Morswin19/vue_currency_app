@@ -68,10 +68,19 @@
     },
     methods: {
       addCurrency: function(curr) {
-        const currencyToAdd = this.currencies.rates.filter(
-          item => item.currency === curr
-        );
-        this.currenciesToShow.push(...currencyToAdd);
+        if (curr !== '') {
+          const currencyToAdd = this.currencies.rates.filter(
+            item => item.currency === curr
+          );
+          const currencyToCheck = this.currenciesToShow.filter(
+            item => item.currency === curr
+          );
+          if (currencyToCheck.length > 0) {
+            return;
+          }
+          // console.log(currencyToCheck);
+          this.currenciesToShow.push(...currencyToAdd);
+        }
       },
       removeElement: function(code) {
         this.currenciesToShow = this.currenciesToShow.filter(
@@ -112,4 +121,7 @@
     flex-direction: column
     justify-content: space-between
     min-height: 100vh
+
+  button
+    outline: none
 </style>

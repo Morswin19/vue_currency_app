@@ -58,6 +58,7 @@
               letter-spacing: 3px
               transition: 0.3s
               cursor: pointer
+              outline: none
               &:hover
                   border: 2px solid lightblue
                   background-color: #ffffff
