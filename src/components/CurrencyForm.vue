@@ -2,13 +2,16 @@
   <div id="CurrencyForm">
     <form>
       <h4>choose currency</h4>
-      <select>
+      <select v-model="selectedCurrencyToAdd">
         <option v-bind:key="index" v-for="(item, index) in currenciesData">{{
           item.currency
         }}</option>
       </select>
-      <button>Add</button>
+      <button v-on:click.prevent="addCurrency(selectedCurrencyToAdd)">
+        Add
+      </button>
     </form>
+    <h3>{{ selectedCurrencyToAdd }}</h3>
   </div>
 </template>
 
@@ -16,7 +19,13 @@
   export default {
     name: 'CurrencyForm',
     props: {
-      currenciesData: Array
+      currenciesData: Array,
+      addCurrency: Function
+    },
+    data() {
+      return {
+        selectedCurrencyToAdd: ''
+      };
     }
   };
 </script>

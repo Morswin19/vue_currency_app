@@ -49,7 +49,6 @@
       acceptModal: function() {
         this.modalToggle = false;
         this.removeElement(this.currencyToRemove);
-        console.log(this.currenciesToShow);
       },
       cancelModal: function() {
         this.modalToggle = false;

@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Header v-bind:date="currencies.effectiveDate" />
-    <CurrencyForm v-bind:currenciesData="currencies.rates" />
+    <CurrencyForm
+      v-bind:currenciesData="currencies.rates"
+      v-bind:addCurrency="addCurrency"
+    />
     <Currencies v-bind:currenciesData="currenciesToShow" />
     <Footer />
   </div>
@@ -53,7 +56,15 @@
         .then(response => response.json())
         .then(data => (this.currencies = data[0]));
     },
-    methods: {}
+    methods: {
+      addCurrency: function(curr) {
+        const currencyToAdd = this.currencies.rates.filter(
+          item => item.currency === curr
+        );
+        this.currenciesToShow.push(...currencyToAdd);
+        console.log(this.currenciesToShow);
+      }
+    }
   };
 </script>
 
