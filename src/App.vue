@@ -5,7 +5,11 @@
       v-bind:currenciesData="currencies.rates"
       v-bind:addCurrency="addCurrency"
     />
-    <Currencies v-bind:currenciesData="currenciesToShow" />
+    <Currencies
+      v-bind:currenciesToShow="currenciesToShow"
+      v-bind:removeElement="removeElement"
+      v-bind:removeAllElements="removeAllElements"
+    />
     <Footer />
   </div>
 </template>
@@ -62,9 +66,17 @@
           item => item.currency === curr
         );
         this.currenciesToShow.push(...currencyToAdd);
-        console.log(this.currenciesToShow);
+      },
+      removeElement: function(code) {
+        this.currenciesToShow = this.currenciesToShow.filter(
+          item => item.code !== code
+        );
+      },
+      removeAllElements: function() {
+        this.currenciesToShow = [];
       }
-    }
+    },
+    computed: {}
   };
 </script>
 

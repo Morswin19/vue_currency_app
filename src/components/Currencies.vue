@@ -36,11 +36,12 @@
       Modal
     },
     props: {
-      currenciesData: Array
+      currenciesToShow: Array,
+      removeElement: Function,
+      removeAllElements: Function
     },
     data() {
       return {
-        currenciesToShow: this.currenciesData,
         modalToggle: false
       };
     },
@@ -55,14 +56,6 @@
       },
       cancelModal: function() {
         this.modalToggle = false;
-      },
-      removeElement: function(code) {
-        this.currenciesToShow = this.currenciesToShow.filter(
-          item => item.code !== code
-        );
-      },
-      removeAllElements: function() {
-        this.currenciesToShow = [];
       }
     }
   };
@@ -83,6 +76,8 @@
         cursor: pointer
         margin: 20px auto
         outline: none
+        &:hover
+          color: #000
     ul
       display: flex
       flex-wrap: wrap
