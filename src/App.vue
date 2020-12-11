@@ -35,22 +35,22 @@
           {
             currency: 'dolar amerykański',
             code: 'USD',
-            mid: 3.6657
+            mid: 1
           },
           {
             currency: 'euro',
             code: 'EUR',
-            mid: 4.4449
+            mid: 1
           },
           {
             currency: 'frank szwajcarski',
             code: 'CHF',
-            mid: 4.1273
+            mid: 1
           },
           {
             currency: 'funt szterling',
             code: 'GBP',
-            mid: 4.9289
+            mid: 1
           }
         ]
       };
@@ -58,7 +58,13 @@
     created() {
       fetch('http://api.nbp.pl/api/exchangerates/tables/A')
         .then(response => response.json())
-        .then(data => (this.currencies = data[0]));
+        .then(data => {
+          this.currencies = data[0];
+          this.getActualRate(0, 'USD');
+          this.getActualRate(1, 'EUR');
+          this.getActualRate(2, 'CHF');
+          this.getActualRate(3, 'GBP');
+        });
     },
     methods: {
       addCurrency: function(curr) {
@@ -74,6 +80,12 @@
       },
       removeAllElements: function() {
         this.currenciesToShow = [];
+      },
+      getActualRate: function(index, code) {
+        this.currenciesToShow[index].mid = this.currencies.rates.filter(
+          item => item.code === code
+        )[0].mid;
+        return 2;
       }
     },
     computed: {}
