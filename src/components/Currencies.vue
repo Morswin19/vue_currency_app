@@ -1,6 +1,6 @@
 <template>
   <div id="Currencies">
-    <h1 ref="title">My currencies</h1>
+    <h1 ref="title">My favourite currencies</h1>
     <ul>
       <li
         v-bind:ref="item.code"
@@ -15,6 +15,9 @@
         </div>
       </li>
     </ul>
+    <button v-on:click="removeAllElements">
+      Remove All
+    </button>
     <Modal
       v-if="modalToggle"
       v-bind:currencyToRemove="currencyToRemove"
@@ -57,6 +60,9 @@
         this.currenciesToShow = this.currenciesToShow.filter(
           item => item.code !== code
         );
+      },
+      removeAllElements: function() {
+        this.currenciesToShow = [];
       }
     }
   };
@@ -64,13 +70,26 @@
 
 <style lang="sass" scoped>
   #Currencies
+    button
+        display: block
+        width: 280px
+        height: 40px
+        font-weight: 700
+        background: lightblue
+        border: 0px
+        border-radius: 20px
+        font-size: 20px
+        color: #666
+        cursor: pointer
+        margin: 20px auto
+        outline: none
     ul
       display: flex
       flex-wrap: wrap
       list-style: none
       justify-content: center
       max-width: 600px
-      margin: 50px auto
+      margin: 20px auto 20px
       li
         position: relative
         width: 250px

@@ -11,7 +11,6 @@
         Add
       </button>
     </form>
-    <h3>{{ selectedCurrencyToAdd }}</h3>
   </div>
 </template>
 
@@ -51,6 +50,7 @@
         font-size: 20px
         color: #666
         cursor: pointer
+        margin: 20px 0
         &:hover
           color: #000
 </style>

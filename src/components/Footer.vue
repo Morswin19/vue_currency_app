@@ -11,7 +11,7 @@
 <style lang="sass" scoped>
   #Footer
     width: 100%
-    height: 100px
+    height: 75px
     background-color: #666
     display: flex
     color: #aaaaaa
