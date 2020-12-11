@@ -15,9 +15,7 @@
         </div>
       </li>
     </ul>
-    <button v-on:click="removeAllElements">
-      Remove All
-    </button>
+    <button v-on:click="showModal('all')">Remove All</button>
     <Modal
       v-if="modalToggle"
       v-bind:currencyToRemove="currencyToRemove"
@@ -52,7 +50,11 @@
       },
       acceptModal: function() {
         this.modalToggle = false;
-        this.removeElement(this.currencyToRemove);
+        if (this.currencyToRemove !== 'all') {
+          this.removeElement(this.currencyToRemove);
+        } else {
+          this.removeAllElements();
+        }
       },
       cancelModal: function() {
         this.modalToggle = false;

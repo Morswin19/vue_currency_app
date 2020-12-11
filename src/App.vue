@@ -78,14 +78,18 @@
           if (currencyToCheck.length > 0) {
             return;
           }
-          // console.log(currencyToCheck);
           this.currenciesToShow.push(...currencyToAdd);
         }
       },
       removeElement: function(code) {
-        this.currenciesToShow = this.currenciesToShow.filter(
-          item => item.code !== code
-        );
+        if (code === 'all') {
+          // this.currenciesToShow = [];
+          console.log('hello guinea pig');
+        } else {
+          this.currenciesToShow = this.currenciesToShow.filter(
+            item => item.code !== code
+          );
+        }
       },
       removeAllElements: function() {
         this.currenciesToShow = [];
@@ -94,7 +98,6 @@
         this.currenciesToShow[index].mid = this.currencies.rates.filter(
           item => item.code === code
         )[0].mid;
-        return 2;
       }
     },
     computed: {}
