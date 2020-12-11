@@ -1,10 +1,10 @@
 <template>
   <div id="Modal">
     <div id="modalContainer">
-      <h2>Do you want to remove item?</h2>
+      <h2>Do you want to remove {{ currencyToRemove }}?</h2>
       <div id="buttons">
-        <button>YES</button>
-        <button>NO</button>
+        <button v-on:click="accept">YES</button>
+        <button v-on:click="cancel">NO</button>
       </div>
     </div>
   </div>
@@ -12,7 +12,12 @@
 
 <script>
   export default {
-    name: 'Modal'
+    name: 'Modal',
+    props: {
+      currencyToRemove: String,
+      accept: Function,
+      cancel: Function
+    }
   };
 </script>
 

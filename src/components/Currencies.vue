@@ -10,12 +10,17 @@
         <h3>{{ item.currency }}</h3>
         <h4>{{ item.code }}</h4>
         <h2>{{ item.mid }}</h2>
-        <div v-on:click="removeElement(item.code)" class="remove">
+        <div v-on:click="showModal(item.code)" class="remove">
           <div class="minus"></div>
         </div>
       </li>
     </ul>
-    <Modal />
+    <Modal
+      v-if="modalToggle"
+      v-bind:currencyToRemove="currencyToRemove"
+      v-bind:accept="acceptModal"
+      v-bind:cancel="cancelModal"
+    />
   </div>
 </template>
 
@@ -32,10 +37,23 @@
     },
     data() {
       return {
-        currenciesToShow: this.currenciesData
+        currenciesToShow: this.currenciesData,
+        modalToggle: false
       };
     },
     methods: {
+      showModal: function(code) {
+        this.modalToggle = true;
+        this.currencyToRemove = code;
+      },
+      acceptModal: function() {
+        this.modalToggle = false;
+        this.removeElement(this.currencyToRemove);
+        console.log(this.currenciesToShow);
+      },
+      cancelModal: function() {
+        this.modalToggle = false;
+      },
       removeElement: function(code) {
         this.currenciesToShow = this.currenciesToShow.filter(
           item => item.code !== code
