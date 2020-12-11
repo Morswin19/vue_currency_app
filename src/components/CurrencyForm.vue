@@ -7,6 +7,7 @@
           item.currency
         }}</option>
       </select>
+      <div v-if="toggleErrorMessage" id="addError">{{ errorMessageText }}</div>
       <button v-on:click.prevent="addCurrency(selectedCurrencyToAdd)">
         Add
       </button>
@@ -19,7 +20,9 @@
     name: 'CurrencyForm',
     props: {
       currenciesData: Array,
-      addCurrency: Function
+      addCurrency: Function,
+      errorMessageText: String,
+      toggleErrorMessage: Boolean
     },
     data() {
       return {
@@ -37,8 +40,13 @@
       select
         width: 280px
         height: 30px
-        margin: 10px 0
+        margin: 10px 0 0
         font-size: 16px
+      #addError
+        padding: 20px
+        color: red
+        background-color: #fff
+        border: 2px solid red
       button
         display: block
         width: 100%
@@ -52,6 +60,7 @@
         color: #666
         cursor: pointer
         outline: none
+        transition: 0.5s
         &:hover
           color: #000
 </style>

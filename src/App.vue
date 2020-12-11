@@ -4,6 +4,8 @@
     <CurrencyForm
       v-bind:currenciesData="currencies.rates"
       v-bind:addCurrency="addCurrency"
+      v-bind:errorMessageText="errorMessageText"
+      v-bind:toggleErrorMessage="toggleErrorMessage"
     />
     <Currencies
       v-bind:currenciesToShow="currenciesToShow"
@@ -31,6 +33,8 @@
     data() {
       return {
         currencies: [],
+        errorMessageText: 'you already follow this currency',
+        toggleErrorMessage: false,
         currenciesToShow: [
           {
             currency: 'dolar amerykański',
@@ -76,16 +80,21 @@
             item => item.currency === curr
           );
           if (currencyToCheck.length > 0) {
+            this.toggleErrorMessage = true;
+            this.errorMessageText = 'you already follow this currency';
+            setTimeout(() => (this.toggleErrorMessage = false), 3000);
             return;
           }
           this.currenciesToShow.push(...currencyToAdd);
+        } else {
+          this.toggleErrorMessage = true;
+          this.errorMessageText = 'you have to choose one from the list';
+          setTimeout(() => (this.toggleErrorMessage = false), 3000);
+          return;
         }
       },
       removeElement: function(code) {
-        if (code === 'all') {
-          // this.currenciesToShow = [];
-          console.log('hello guinea pig');
-        } else {
+        if (code !== 'all') {
           this.currenciesToShow = this.currenciesToShow.filter(
             item => item.code !== code
           );
