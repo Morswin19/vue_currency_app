@@ -3,8 +3,8 @@
     <div id="modalContainer">
       <h2>Do you want to remove {{ currencyToRemove }}?</h2>
       <div id="buttons">
-        <button v-on:click="accept">YES</button>
-        <button v-on:click="cancel">NO</button>
+        <button v-on:click="acceptModal">YES</button>
+        <button v-on:click="cancelModal">NO</button>
       </div>
     </div>
   </div>
@@ -13,10 +13,26 @@
 <script>
   export default {
     name: 'Modal',
-    props: {
-      currencyToRemove: String,
-      accept: Function,
-      cancel: Function
+    computed: {
+      currencyToRemove() {
+        return this.$store.state.currencyToRemove;
+      }
+    },
+    methods: {
+      acceptModal: function() {
+        this.$store.state.modalToggle = false;
+        if (this.$store.state.currencyToRemove !== 'all') {
+          this.$store.commit(
+            'removeElement',
+            this.$store.state.currencyToRemove
+          );
+        } else {
+          this.$store.commit('removeAllElements');
+        }
+      },
+      cancelModal: function() {
+        this.$store.state.modalToggle = false;
+      }
     }
   };
 </script>
@@ -32,6 +48,7 @@
       width: 100vw
       height: 100vh
       background: rgba(#000000, 0.3)
+      transition: 1s
       #modalContainer
           display: flex
           flex-direction: column

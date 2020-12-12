@@ -3,38 +3,44 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+const myLocalCurrencies = JSON.parse(localStorage.getItem('mycurrencies'));
+const startingCurrencies = [
+  {
+    currency: 'dolar amerykański',
+    code: 'USD',
+    mid: 1
+  },
+  {
+    currency: 'euro',
+    code: 'EUR',
+    mid: 1
+  },
+  {
+    currency: 'frank szwajcarski',
+    code: 'CHF',
+    mid: 1
+  }
+];
+
+const myCurrencies =
+  myLocalCurrencies.length > 0 ? myLocalCurrencies : startingCurrencies;
+
 export const store = new Vuex.Store({
   state: {
     currencies: [],
     modalToggle: false,
-    currenciesToShow: [
-      {
-        currency: 'dolar amerykański',
-        code: 'USD',
-        mid: 1
-      },
-      {
-        currency: 'euro',
-        code: 'EUR',
-        mid: 1
-      },
-      {
-        currency: 'frank szwajcarski',
-        code: 'CHF',
-        mid: 1
-      },
-      {
-        currency: 'funt szterling',
-        code: 'GBP',
-        mid: 1
-      }
-    ],
+    currenciesToShow: myCurrencies,
     errorMessageText: 'you already follow this currency',
-    toggleErrorMessage: false
+    toggleErrorMessage: false,
+    currencyToRemove: ''
   },
   mutations: {
     removeAllElements: state => {
       state.currenciesToShow = [];
+      localStorage.setItem(
+        'mycurrencies',
+        JSON.stringify(state.currenciesToShow)
+      );
     },
     removeElement: (state, code) => {
       if (code !== 'all') {
@@ -42,6 +48,10 @@ export const store = new Vuex.Store({
           item => item.code !== code
         );
       }
+      localStorage.setItem(
+        'mycurrencies',
+        JSON.stringify(state.currenciesToShow)
+      );
     },
     getActualRate: (state, payload) => {
       state.currenciesToShow[payload[0]].mid = state.currencies.rates.filter(
@@ -63,6 +73,10 @@ export const store = new Vuex.Store({
           return;
         }
         state.currenciesToShow.push(...currencyToAdd);
+        localStorage.setItem(
+          'mycurrencies',
+          JSON.stringify(state.currenciesToShow)
+        );
       } else {
         state.toggleErrorMessage = true;
         state.errorMessageText = 'you have to choose one from the list';

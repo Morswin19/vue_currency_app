@@ -16,12 +16,7 @@
       </li>
     </ul>
     <button v-on:click="showModal('all')">Remove All</button>
-    <Modal
-      v-if="modalToggle"
-      v-bind:currencyToRemove="currencyToRemove"
-      v-bind:accept="acceptModal"
-      v-bind:cancel="cancelModal"
-    />
+    <Modal v-if="modalToggle" />
   </div>
 </template>
 
@@ -36,18 +31,7 @@
     methods: {
       showModal: function(code) {
         this.$store.state.modalToggle = true;
-        this.currencyToRemove = code;
-      },
-      acceptModal: function() {
-        this.$store.state.modalToggle = false;
-        if (this.currencyToRemove !== 'all') {
-          this.$store.commit('removeElement', this.currencyToRemove);
-        } else {
-          this.$store.commit('removeAllElements');
-        }
-      },
-      cancelModal: function() {
-        this.$store.state.modalToggle = false;
+        this.$store.state.currencyToRemove = code;
       }
     },
     computed: {

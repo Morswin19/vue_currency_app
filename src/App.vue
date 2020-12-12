@@ -26,10 +26,12 @@
         .then(response => response.json())
         .then(data => {
           this.$store.state.currencies = data[0];
-          this.$store.commit('getActualRate', [0, 'USD']);
-          this.$store.commit('getActualRate', [1, 'EUR']);
-          this.$store.commit('getActualRate', [2, 'CHF']);
-          this.$store.commit('getActualRate', [3, 'GBP']);
+          for (let i = 0; i < this.$store.state.currenciesToShow.length; i++) {
+            this.$store.commit('getActualRate', [
+              i,
+              this.$store.state.currenciesToShow[i].code
+            ]);
+          }
         });
     },
     computed: {
