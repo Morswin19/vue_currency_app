@@ -11,6 +11,8 @@
 - [Sections](#sections)
 - [Instruction to tun](#instruction-to-run)
 - [Instruction to use](#instruction-to-use)
+- [Where to watch](#where-to-watch)
+- [Contact](#contact)
 
 ## Technologies
 
@@ -58,5 +60,13 @@ When you reload:
 
 - if you change anything - app shows data from local storage
 - if you don't change - app will shows 3 popular currencies again
-- if you remove remove all currencies - app will also shows 3 popular currencie again, i assume, that you have at least one favurite currency :)
-  Have fun :)
+- if you remove all currencies - app will also shows 3 popular currencies again. I assume, that you have at least one favourite currency :)
+- Have fun :)
+
+## Where to watch
+
+To watch this site, please visit: https://vuecurrencyapp.netlify.app/
+
+## Contact
+
+Feel free to contact me: piotr.kalman85@gmail.com
