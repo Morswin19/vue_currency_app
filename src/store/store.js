@@ -100,7 +100,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     getCurrencyData: () =>
-      fetch('http://api.nbp.pl/api/exchangerates/tables/A')
+      fetch('https://api.nbp.pl/api/exchangerates/tables/A')
         .then(response => response.json())
         .then(data => {
           store.state.currencies = data[0];

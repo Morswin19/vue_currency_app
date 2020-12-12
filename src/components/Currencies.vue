@@ -28,10 +28,6 @@
       Modal
     },
     methods: {
-      // showModal(code) {
-      //   this.$store.state.modalToggle = true;
-      //   this.$store.state.currencyToRemove = code;
-      // }
       showModal(code) {
         this.$store.commit('showModal', code);
       }

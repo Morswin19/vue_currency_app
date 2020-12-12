@@ -36,7 +36,7 @@
       }
     },
     methods: {
-      addCurrency: function(selectedOption) {
+      addCurrency(selectedOption) {
         this.$store.commit('addCurrency', selectedOption);
       }
     }

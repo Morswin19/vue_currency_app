@@ -16,5 +16,7 @@
     display: flex
     color: #aaaaaa
     span
+      width: 90%
       margin: auto
+      text-align: right
 </style>
