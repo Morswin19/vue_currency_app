@@ -7,7 +7,6 @@
 
 <script>
   export default {
-    name: 'Header',
     computed: {
       date() {
         return this.$store.state.currencies.effectiveDate;

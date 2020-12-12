@@ -24,14 +24,16 @@
   import Modal from './Modal.vue';
 
   export default {
-    name: 'Currencies',
     components: {
       Modal
     },
     methods: {
-      showModal: function(code) {
-        this.$store.state.modalToggle = true;
-        this.$store.state.currencyToRemove = code;
+      // showModal(code) {
+      //   this.$store.state.modalToggle = true;
+      //   this.$store.state.currencyToRemove = code;
+      // }
+      showModal(code) {
+        this.$store.commit('showModal', code);
       }
     },
     computed: {

@@ -3,6 +3,15 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+// fetch('http://api.nbp.pl/api/exchangerates/tables/A')
+//   .then(response => response.json())
+//   .then(data => {
+//     store.state.currencies = data[0];
+//     for (let i = 0; i < store.state.currenciesToShow.length; i++) {
+//       store.commit('getActualRate', [i, store.state.currenciesToShow[i].code]);
+//     }
+//   });
+
 const myLocalCurrencies = JSON.parse(localStorage.getItem('mycurrencies'));
 const startingCurrencies = [
   {
@@ -83,6 +92,24 @@ export const store = new Vuex.Store({
         setTimeout(() => (state.toggleErrorMessage = false), 3000);
         return;
       }
+    },
+    showModal: (state, code) => {
+      state.modalToggle = true;
+      state.currencyToRemove = code;
     }
+  },
+  actions: {
+    getCurrencyData: () =>
+      fetch('http://api.nbp.pl/api/exchangerates/tables/A')
+        .then(response => response.json())
+        .then(data => {
+          store.state.currencies = data[0];
+          for (let i = 0; i < store.state.currenciesToShow.length; i++) {
+            store.commit('getActualRate', [
+              i,
+              store.state.currenciesToShow[i].code
+            ]);
+          }
+        })
   }
 });

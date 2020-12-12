@@ -12,14 +12,13 @@
 
 <script>
   export default {
-    name: 'Modal',
     computed: {
       currencyToRemove() {
         return this.$store.state.currencyToRemove;
       }
     },
     methods: {
-      acceptModal: function() {
+      acceptModal() {
         this.$store.state.modalToggle = false;
         if (this.$store.state.currencyToRemove !== 'all') {
           this.$store.commit(
@@ -30,7 +29,7 @@
           this.$store.commit('removeAllElements');
         }
       },
-      cancelModal: function() {
+      cancelModal() {
         this.$store.state.modalToggle = false;
       }
     }
