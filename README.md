@@ -1,24 +1,62 @@
-# currencies
+# PIOTR KALMAN - Currencies Vue App
 
-## Project setup
-```
-yarn install
-```
+## General Info
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+> Hello, Currencies Vue App is a simple application showing your favorite currencies fetching from the NBP api with actual rate (max one day delay). The application uses local memory and thus remembers the list of your favorite currencies
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## Table of contents
 
-### Lints and fixes files
-```
-yarn lint
-```
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Sections](#sections)
+- [Instruction to tun](#instruction-to-run)
+- [Instruction to use](#instruction-to-use)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Technologies
+
+    HTML5
+    CSS3
+    vue 2.6.11
+    vuex 3.6.0
+    eslint 6.7.2
+    prettier 3.20.0
+    node-sass 5.0.0
+    web browser local storage
+
+## Sections
+
+##### Header
+
+- simple header with rates date
+
+##### Currencies Form
+
+- selecting option input
+- currency submit button
+
+##### Currencies List
+
+- list of your favourite currencies
+- each currency item has a button, to remove it from the list
+- button to remove all currencies from the list
+
+##### Footer
+
+- copyrights and github link to view the code
+
+## Instruction to run
+
+To run this application after cloning or downloading, make these steps:
+
+- yarn install (be sure that you are in the main project folder with package.json file)
+- yarn serve
+
+## Instruction to use
+
+If you use this application for the first time, you will have in your list 3 popular currencies. Every add or remove currency will change the local storage.
+When you reload:
+
+- if you change anything - app shows data from local storage
+- if you don't change - app will shows 3 popular currencies again
+- if you remove remove all currencies - app will also shows 3 popular currencie again, i assume, that you have at least one favurite currency :)
+  Have fun :)
