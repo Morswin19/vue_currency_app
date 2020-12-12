@@ -8,8 +8,10 @@
 <script>
   export default {
     name: 'Header',
-    props: {
-      date: String
+    computed: {
+      date() {
+        return this.$store.state.currencies.effectiveDate;
+      }
     }
   };
 </script>

@@ -1,17 +1,8 @@
 <template>
   <div id="app">
-    <Header v-bind:date="currencies.effectiveDate" />
-    <CurrencyForm
-      v-bind:currenciesData="currencies.rates"
-      v-bind:addCurrency="addCurrency"
-      v-bind:errorMessageText="errorMessageText"
-      v-bind:toggleErrorMessage="toggleErrorMessage"
-    />
-    <Currencies
-      v-bind:currenciesToShow="currenciesToShow"
-      v-bind:removeElement="removeElement"
-      v-bind:removeAllElements="removeAllElements"
-    />
+    <Header />
+    <CurrencyForm />
+    <Currencies />
     <Footer />
   </div>
 </template>
@@ -30,86 +21,22 @@
       Currencies,
       Footer
     },
-    data() {
-      return {
-        currencies: [],
-        errorMessageText: 'you already follow this currency',
-        toggleErrorMessage: false,
-        currenciesToShow: [
-          {
-            currency: 'dolar amerykański',
-            code: 'USD',
-            mid: 1
-          },
-          {
-            currency: 'euro',
-            code: 'EUR',
-            mid: 1
-          },
-          {
-            currency: 'frank szwajcarski',
-            code: 'CHF',
-            mid: 1
-          },
-          {
-            currency: 'funt szterling',
-            code: 'GBP',
-            mid: 1
-          }
-        ]
-      };
-    },
     created() {
       fetch('http://api.nbp.pl/api/exchangerates/tables/A')
         .then(response => response.json())
         .then(data => {
-          this.currencies = data[0];
-          this.getActualRate(0, 'USD');
-          this.getActualRate(1, 'EUR');
-          this.getActualRate(2, 'CHF');
-          this.getActualRate(3, 'GBP');
+          this.$store.state.currencies = data[0];
+          this.$store.commit('getActualRate', [0, 'USD']);
+          this.$store.commit('getActualRate', [1, 'EUR']);
+          this.$store.commit('getActualRate', [2, 'CHF']);
+          this.$store.commit('getActualRate', [3, 'GBP']);
         });
     },
-    methods: {
-      addCurrency: function(curr) {
-        if (curr !== '') {
-          const currencyToAdd = this.currencies.rates.filter(
-            item => item.currency === curr
-          );
-          const currencyToCheck = this.currenciesToShow.filter(
-            item => item.currency === curr
-          );
-          if (currencyToCheck.length > 0) {
-            this.toggleErrorMessage = true;
-            this.errorMessageText = 'you already follow this currency';
-            setTimeout(() => (this.toggleErrorMessage = false), 3000);
-            return;
-          }
-          this.currenciesToShow.push(...currencyToAdd);
-        } else {
-          this.toggleErrorMessage = true;
-          this.errorMessageText = 'you have to choose one from the list';
-          setTimeout(() => (this.toggleErrorMessage = false), 3000);
-          return;
-        }
-      },
-      removeElement: function(code) {
-        if (code !== 'all') {
-          this.currenciesToShow = this.currenciesToShow.filter(
-            item => item.code !== code
-          );
-        }
-      },
-      removeAllElements: function() {
-        this.currenciesToShow = [];
-      },
-      getActualRate: function(index, code) {
-        this.currenciesToShow[index].mid = this.currencies.rates.filter(
-          item => item.code === code
-        )[0].mid;
+    computed: {
+      currenciesToShow() {
+        return this.$store.state.currenciesToShow;
       }
-    },
-    computed: {}
+    }
   };
 </script>
 
@@ -123,7 +50,6 @@
     font-family: 'Roboto', sans-serif
 
   #app
-    font-family: Avenir, Helvetica, Arial, sans-serif
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
     text-align: center

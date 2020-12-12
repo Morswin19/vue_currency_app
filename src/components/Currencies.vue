@@ -33,31 +33,29 @@
     components: {
       Modal
     },
-    props: {
-      currenciesToShow: Array,
-      removeElement: Function,
-      removeAllElements: Function
-    },
-    data() {
-      return {
-        modalToggle: false
-      };
-    },
     methods: {
       showModal: function(code) {
-        this.modalToggle = true;
+        this.$store.state.modalToggle = true;
         this.currencyToRemove = code;
       },
       acceptModal: function() {
-        this.modalToggle = false;
+        this.$store.state.modalToggle = false;
         if (this.currencyToRemove !== 'all') {
-          this.removeElement(this.currencyToRemove);
+          this.$store.commit('removeElement', this.currencyToRemove);
         } else {
-          this.removeAllElements();
+          this.$store.commit('removeAllElements');
         }
       },
       cancelModal: function() {
-        this.modalToggle = false;
+        this.$store.state.modalToggle = false;
+      }
+    },
+    computed: {
+      modalToggle() {
+        return this.$store.state.modalToggle;
+      },
+      currenciesToShow() {
+        return this.$store.state.currenciesToShow;
       }
     }
   };

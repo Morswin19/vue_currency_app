@@ -2,13 +2,15 @@
   <div id="CurrencyForm">
     <form>
       <h4>choose currency</h4>
-      <select v-model="selectedCurrencyToAdd">
-        <option v-bind:key="index" v-for="(item, index) in currenciesData">{{
+      <select v-model="selectedCurrency">
+        <option v-bind:key="index" v-for="(item, index) in currencies">{{
           item.currency
         }}</option>
       </select>
-      <div v-if="toggleErrorMessage" id="addError">{{ errorMessageText }}</div>
-      <button v-on:click.prevent="addCurrency(selectedCurrencyToAdd)">
+      <div v-if="toggleErrorMessage" id="addError">
+        {{ errorMessageText }}
+      </div>
+      <button v-on:click.prevent="addCurrency(selectedCurrency)">
         Add
       </button>
     </form>
@@ -18,16 +20,26 @@
 <script>
   export default {
     name: 'CurrencyForm',
-    props: {
-      currenciesData: Array,
-      addCurrency: Function,
-      errorMessageText: String,
-      toggleErrorMessage: Boolean
-    },
     data() {
       return {
-        selectedCurrencyToAdd: ''
+        selectedCurrency: ''
       };
+    },
+    computed: {
+      currencies() {
+        return this.$store.state.currencies.rates;
+      },
+      errorMessageText() {
+        return this.$store.state.errorMessageText;
+      },
+      toggleErrorMessage() {
+        return this.$store.state.toggleErrorMessage;
+      }
+    },
+    methods: {
+      addCurrency: function(selectedOption) {
+        this.$store.commit('addCurrency', selectedOption);
+      }
     }
   };
 </script>
