@@ -1,12 +1,15 @@
 <template>
   <div id="Header">
     <h1>Currency App</h1>
-    <h2>Exchange Rate Date: {{ date }}</h2>
+    <h2>
+      <span>Exchange Rate Date: </span> <span> {{ date }}</span>
+    </h2>
   </div>
 </template>
 
 <script>
   export default {
+    //all methods and computed are explain in store.js file
     computed: {
       date() {
         return this.$store.state.currencies.effectiveDate;
@@ -31,4 +34,18 @@
       width: 100%
       text-align: right
       padding-right: 20px
+  @media(max-width: 500px)
+    #Header
+      h1
+        font-size: 50px
+      h2
+        font-size: 20px
+        text-align: center
+        padding-right: 0
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        span
+          margin-right: 2px
+          margin-left: 2px
 </style>

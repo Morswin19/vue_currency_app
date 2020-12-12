@@ -20,6 +20,7 @@
       Currencies,
       Footer
     },
+    //fetching data when component is created
     created() {
       this.$store.dispatch('getCurrencyData');
     }
@@ -33,19 +34,33 @@
     margin: 0
     padding: 0
     box-sizing: border-box
-    font-family: 'Roboto', sans-serif
 
   #App
-    -webkit-font-smoothing: antialiased
-    -moz-osx-font-smoothing: grayscale
-    text-align: center
-    color: #2c3e50
     overflow-x: hidden
     display: flex
     flex-direction: column
     justify-content: space-between
     min-height: 100vh
-
-  button
-    outline: none
+    font-family: 'Roboto', sans-serif
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    text-align: center
+    background-color: #F7f9FC
+    button
+        display: block
+        width: 280px
+        height: 40px
+        margin: 20px auto
+        font-weight: 700
+        background: lightblue
+        border: 0px
+        border-radius: 20px
+        font-size: 20px
+        color: #666
+        cursor: pointer
+        outline: none
+        transition: 0.2s
+        &:hover
+          color: lightblue
+          background: #666
 </style>

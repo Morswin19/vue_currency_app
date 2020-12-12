@@ -3,8 +3,9 @@
     <div id="modalContainer">
       <h2>Do you want to remove {{ currencyToRemove }}?</h2>
       <div id="buttons">
-        <button v-on:click="acceptModal">YES</button>
-        <button v-on:click="cancelModal">NO</button>
+        <!-- buttons for accept or cancel currency removal -->
+        <button class="modalButton" v-on:click="acceptModal">YES</button>
+        <button class="modalButton" v-on:click="cancelModal">NO</button>
       </div>
     </div>
   </div>
@@ -12,6 +13,7 @@
 
 <script>
   export default {
+    //all methods and computed are explain in store.js file
     computed: {
       currencyToRemove() {
         return this.$store.state.currencyToRemove;
@@ -47,7 +49,6 @@
       width: 100vw
       height: 100vh
       background: rgba(#000000, 0.3)
-      transition: 1s
       #modalContainer
           display: flex
           flex-direction: column
@@ -62,21 +63,25 @@
           background-color: #ffffff
           border-radius: 20px
           border: 2px solid lightblue
-          button
-              width: 100px
-              height: 40px
-              margin: 10px 20px
-              border-radius: 20px
-              border: 2px solid #ffffff
-              background: #666666
-              color: #ffffff
-              font-weight: 700
-              letter-spacing: 3px
-              transition: 0.3s
-              cursor: pointer
-              outline: none
-              &:hover
-                  border: 2px solid lightblue
-                  background-color: #ffffff
-                  color: #000000
+          #buttons
+            display: flex
+            margin: 0 auto
+            .modalButton
+                width: 100px
+                height: 40px
+                margin: 10px 20px
+                border-radius: 20px
+                border: 2px solid #ffffff
+                background: #666666
+                color: #ffffff
+                font-weight: 700
+                font-size: 17px
+                letter-spacing: 3px
+                transition: 0.3s
+                cursor: pointer
+                outline: none
+                &:hover
+                    border: 2px solid lightblue
+                    background-color: #ffffff
+                    color: #000000
 </style>

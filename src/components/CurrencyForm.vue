@@ -7,6 +7,7 @@
           item.currency
         }}</option>
       </select>
+      <!-- error message only show when selected option is '' or we arleady have selected currency -->
       <div v-if="toggleErrorMessage" id="addError">
         {{ errorMessageText }}
       </div>
@@ -21,9 +22,11 @@
   export default {
     data() {
       return {
+        //currency selected in select input
         selectedCurrency: ''
       };
     },
+    //all methods and computed are explain in store.js file
     computed: {
       currencies() {
         return this.$store.state.currencies.rates;
@@ -58,20 +61,4 @@
         color: red
         background-color: #fff
         border: 2px solid red
-      button
-        display: block
-        width: 100%
-        height: 40px
-        margin: 20px 0
-        font-weight: 700
-        background: lightblue
-        border: 0px
-        border-radius: 20px
-        font-size: 20px
-        color: #666
-        cursor: pointer
-        outline: none
-        transition: 0.5s
-        &:hover
-          color: #000
 </style>
