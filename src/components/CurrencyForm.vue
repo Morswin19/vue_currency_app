@@ -48,7 +48,7 @@
 
 <style lang="sass" scoped>
   #CurrencyForm
-    margin: 50px auto
+    margin: 0px auto 50px
     width: 280px
     form
       select

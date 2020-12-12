@@ -22,11 +22,13 @@
   #Header
     width: 100vw
     height: 200px
-    background-color: #666666
+    background-image: linear-gradient(90deg, #666, #222)
     color: #ffffff
     display: flex
     flex-direction: column
     padding: 20px
+    margin-bottom: 50px
+    box-shadow: 0px 6px 10px 3px rgba(#A2B4C6,0.4)
     h1
       margin: auto
       font-size: 72px

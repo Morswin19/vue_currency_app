@@ -62,5 +62,5 @@
         transition: 0.2s
         &:hover
           color: lightblue
-          background: #666
+          background-image: linear-gradient(90deg, #666, #222)
 </style>

@@ -46,12 +46,13 @@
 
 <style lang="sass" scoped>
   #Currencies
+    margin-bottom: 50px
     ul
       display: flex
       justify-content: center
       flex-wrap: wrap
       max-width: 600px
-      margin: 20px auto 20px
+      margin: 0px auto 0px
       list-style: none
       li
         position: relative
@@ -63,6 +64,7 @@
         border-radius: 20px
         box-shadow: -6px -6px 10px 3px white, 6px 6px 10px 3px rgba(#A2B4C6,0.4)
         background-color: #fff
+        animation: show-li 0.5s
         .remove
           position: absolute
           top: 20px
@@ -84,4 +86,9 @@
           &:hover
             background-color: #FF0000
             transform: scale(1.2)
+  @keyframes show-li
+    from
+      transform: scale(0)
+    to
+      transform: scale(1)
 </style>

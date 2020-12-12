@@ -12,9 +12,10 @@
   #Footer
     width: 100%
     height: 75px
-    background-color: #666
+    background-image: linear-gradient(90deg, #666, #222)
     display: flex
     color: #aaaaaa
+    box-shadow: 0px -6px 10px 3px rgba(#A2B4C6,0.4)
     span
       width: 90%
       margin: auto
