@@ -26,16 +26,16 @@
     color: #ffffff
     display: flex
     flex-direction: column
-    padding: 20px
+    padding-bottom: 20px
     margin-bottom: 50px
     box-shadow: 0px 6px 10px 3px rgba(#A2B4C6,0.4)
     h1
       margin: auto
       font-size: 72px
     h2
-      width: 100%
+      width: 90%
+      margin: 0 auto
       text-align: right
-      padding-right: 20px
   @media(max-width: 500px)
     #Header
       h1
@@ -43,7 +43,6 @@
       h2
         font-size: 20px
         text-align: center
-        padding-right: 0
         display: flex
         flex-wrap: wrap
         justify-content: center
