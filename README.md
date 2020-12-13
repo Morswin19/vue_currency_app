@@ -67,6 +67,10 @@ When you reload:
 
 To watch this site, please visit: https://vuecurrencyapp.netlify.app/
 
+## Mockup
+
+<img src="./assets/sitescreen.png">
+
 ## Contact
 
 Feel free to contact me: piotr.kalman85@gmail.com
