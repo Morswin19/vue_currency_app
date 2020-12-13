@@ -52,7 +52,7 @@
         height: 40px
         margin: 20px auto
         font-weight: 700
-        background: lightblue
+        background: #FFCA3A
         border: 0px
         border-radius: 20px
         font-size: 20px
@@ -61,6 +61,6 @@
         outline: none
         transition: 0.2s
         &:hover
-          color: lightblue
+          color: #FFCA3A
           background-image: linear-gradient(90deg, #666, #222)
 </style>

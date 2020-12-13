@@ -81,7 +81,7 @@
                 cursor: pointer
                 outline: none
                 &:hover
-                    border: 2px solid lightblue
+                    border: 2px solid #FFCA3A
                     background-color: #ffffff
                     color: #000000
 </style>

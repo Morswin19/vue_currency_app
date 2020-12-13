@@ -60,7 +60,7 @@
         margin: 20px
         padding: 20px
         text-align: left
-        border: 2px solid lightblue
+        border: 2px solid #FFCA3A
         border-radius: 20px
         box-shadow: -6px -6px 10px 3px white, 6px 6px 10px 3px rgba(#A2B4C6,0.4)
         background-color: #fff
