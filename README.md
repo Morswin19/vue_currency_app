@@ -69,7 +69,7 @@ To watch this site, please visit: https://vuecurrencyapp.netlify.app/
 
 ## Mockup
 
-<img src="./assets/sitescreen.png">
+<img src="https://raw.githubusercontent.com/Morswin19/vue_currency_app/main/src/assets/sitescreen.png?token=AMDNOXRYALSV5B3Z6LXAXBC72YQZG">
 
 ## Contact
 
